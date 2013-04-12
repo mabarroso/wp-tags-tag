@@ -8,7 +8,7 @@ Author: mabarroso
 Author URI: http://www.mabarroso.com/
 */
 
-if ( ! class_exists( 'TagsTag' ) ) :
+if (!class_exists('TagsTag')):
 class TagsTag {
   /**
    * Setup our filters
@@ -16,7 +16,7 @@ class TagsTag {
    * @return void
    */
   public function __construct() {
-      add_filter( 'the_content', array( $this, 'append_content' ) );
+    add_filter('the_content', array($this, 'append_content'));
   }
 
   /**
