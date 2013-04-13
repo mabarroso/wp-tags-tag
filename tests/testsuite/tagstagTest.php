@@ -33,7 +33,7 @@ class TagsTagTest extends WP_UnitTestCase {
   }
 
   public function testInclude() {
-    $response = $this->tagsTag->append_content('[tags include="tag 1.1, tag 2.1"]');
+    $response = $this->tagsTag->append_content('[tags include="11, 21"]');
     $this->assertContains('tag 1.1',    $response);
     $this->assertContains('tag 2.1',    $response);
     $this->assertNotContains('tag 1.2', $response);
@@ -41,7 +41,7 @@ class TagsTagTest extends WP_UnitTestCase {
   }
 
   public function testExclude() {
-    $response = $this->tagsTag->append_content('[tags exclude="tag 2.2"]');
+    $response = $this->tagsTag->append_content('[tags exclude="22"]');
     $this->assertContains('tag 2.1',    $response);
     $this->assertNotContains('tag 2.2', $response);
   }
