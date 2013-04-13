@@ -21,28 +21,28 @@ class TagsTagTest extends WP_UnitTestCase {
     $this->assertContains('tag 1</a>',  $response);
     $this->assertContains('tag 1.1',    $response);
     $this->assertContains('tag 1.2',    $response);
-    $this->assertContains('tag 1.3',    $response);
+    $this->assertNotContains('tag 1.3', $response);
     $this->assertContains('tag 2</a>',  $response);
     $this->assertContains('tag 2.1',    $response);
     $this->assertContains('tag 2.2',    $response);
-    $this->assertContains('tag 2.3',    $response);
-    $this->assertContains('tag 3</a>',  $response);
+    $this->assertNotContains('tag 2.3', $response);
+    $this->assertNotContains('tag 3<',  $response);
     $this->assertContains('tag 3.1',    $response);
     $this->assertContains('tag 3.2',    $response);
-    $this->assertContains('tag 3.3',    $response);
+    $this->assertNotContains('tag 3.3', $response);
   }
 
-  public function testShowCount() {
-    $response = $this->tagsTag->append_content('[tags show_count="yes"]');
-    $this->assertContains('tag 2.1</a> (21)', $response);
-    $this->assertContains('tag 2.2</a> (22)', $response);
-    $this->assertContains('tag 2.3</a> (0)', $response);
+  public function testInclude() {
+    $response = $this->tagsTag->append_content('[tags include="tag 1.1, tag 2.1"]');
+    $this->assertContains('tag 1.1',    $response);
+    $this->assertContains('tag 2.1',    $response);
+    $this->assertNotContains('tag 1.2', $response);
+    $this->assertNotContains('tag 2.2', $response);
   }
 
-  public function testHideEmpty() {
-    $response = $this->tagsTag->append_content('[tags hide_empty="yes"]');
-    $this->assertContains('tag 2.1', $response);
-    $this->assertContains('tag 2.2', $response);
-    $this->assertNotContains('tag 2.3', $response);
+  public function testExclude() {
+    $response = $this->tagsTag->append_content('[tags exclude="tag 2.2"]');
+    $this->assertContains('tag 2.1',    $response);
+    $this->assertNotContains('tag 2.2', $response);
   }
 }
