@@ -38,6 +38,9 @@ class TagsTag {
 				if (preg_match('#number="([^"]+)"#i', $params, $param_matches) ) {
 					$number = $param_matches[1];
 				}
+				if (preg_match('#exclude="([^"]+)"#i', $params, $param_matches) ) {
+					$exclude = $param_matches[1];
+				}
 
         $args = array(
           'smallest'                  => 8,
