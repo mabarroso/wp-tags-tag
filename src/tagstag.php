@@ -26,7 +26,45 @@ class TagsTag {
    * @return string
    */
   public function append_content($content) {
+    $number   = 45;
+    $exclude  = null;
+    $include  = null;
 
+		if (preg_match_all('#\[tags *([^\]]*)\]#im', $content, $tag_matches) ) {
+			$i=0;
+			foreach ($tag_matches[1] as $params) {
+				$tag = str_replace(array('[', ']'), array("\\[", "\\]"), $tag_matches[0][$i++]);
+
+				if (preg_match('#number="([^"]+)"#i', $params, $param_matches) ) {
+					$number = $param_matches[1];
+				}
+
+        $args = array(
+          'smallest'                  => 8,
+          'largest'                   => 22,
+          'unit'                      => 'pt',
+          'number'                    => $number,
+          'format'                    => 'flat',
+          'separator'                 => "\n",
+          'orderby'                   => 'name',
+          'order'                     => 'ASC',
+          'exclude'                   => $exclude,
+          'include'                   => $include,
+         #'topic_count_text_callback' => default_topic_count_text,
+          'link'                      => 'view',
+          'taxonomy'                  => 'post_tag',
+          'echo'                      => true,
+          'child_of'                  => null
+        );
+
+				ob_start();
+				  wp_tag_cloud($args);
+				  $tagContent = ob_get_contents();
+        ob_end_clean();
+
+				$content = preg_replace('#'.$tag.'#m', $tagContent, $content);
+			}
+		}
     return $content;
   }
 }
