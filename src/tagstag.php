@@ -41,6 +41,9 @@ class TagsTag {
 				if (preg_match('#exclude="([^"]+)"#i', $params, $param_matches) ) {
 					$exclude = $param_matches[1];
 				}
+				if (preg_match('#include="([^"]+)"#i', $params, $param_matches) ) {
+					$include = $param_matches[1];
+				}
 
         $args = array(
           'smallest'                  => 8,
