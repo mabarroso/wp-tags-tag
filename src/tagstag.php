@@ -2,7 +2,7 @@
 /*
 Plugin Name: Tags Tag
 Plugin URI: http://lab.mabarroso.com/tags-tag-wordpress-plugin
-Description: Allow list tags into your posts or pages
+Description: Allow tags cloud into your posts or pages
 Version: 1.0
 Author: mabarroso
 Author URI: http://www.mabarroso.com/
