@@ -1,9 +1,9 @@
 mkdir out &>/dev/null
-mkdir out/categories-tag &>/dev/null
-rm out/categories-tag/*
-cp README.md		    		    out/categories-tag
-cp -r src/* 				    		out/categories-tag
+mkdir out/tags-tag &>/dev/null
+rm out/tags-tag/*
+cp README.md		    		    out/tags-tag
+cp -r src/* 				    		out/tags-tag
 cd out
-zip categories-tag.zip categories-tag/*
-tar -cvf categories-tag.tar.gz categories-tag/*
+zip tags-tag.zip tags-tag/*
+tar -cvf tags-tag.tar.gz tags-tag/*
 cd ..
