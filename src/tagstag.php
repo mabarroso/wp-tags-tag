@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Tags Tag
-Plugin URI: http://lab.mabarroso.com/tags-tag-wordpress-plugin
+Plugin URI: http://lab.mabarroso.com/en/tags-tag-wordpress-plugin
 Description: Allow tags cloud into your posts or pages
 Version: 1.0
 Author: mabarroso
